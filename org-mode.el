@@ -8,14 +8,15 @@
 ;; Capture
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
+      '(("t" "✔ Todo" entry (file+headline "~/org/gtd.org" "Tasks")
          "* TODO %?\n  %i\n  %a")
-        ("j" "Journal" entry (file+datetree "~/org/journal.org")
-         "* %?\nEntered on %U\n  %i\n  %a")))
+        ("j" "✍ Journal" entry (file+datetree "~/org/journal.org")
+         "* %?\nEntered on %U\n  %i\n  %a")
+	("n" "✎ Notes" entry (file+datetree "~/org/notes.org")
+	 "* %?\nEntered on %U\n  %i\n  %a")))
 
 (setq org-agenda-files (list "~/org"))
 
 (use-package org-bullets
-  :ensure t
-  :commands org-bullets-mode
+  :custom (org-bullets-bullet-list '("♞" "❶" "❷" "❸" "❹" "❺" "❻" "❼"))
   :hook (org-mode . org-bullets-mode))
