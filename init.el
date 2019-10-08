@@ -15,3 +15,4 @@
 (load (xah-get-fullpath "./dired-mode"))
 (load (xah-get-fullpath "./ivy-mode"))
 (load (xah-get-fullpath "./org-mode"))
+(load (xah-get-fullpath "./yasnippet"))

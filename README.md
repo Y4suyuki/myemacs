@@ -15,3 +15,5 @@ Packages are required to be installed manually.
 - company
 - use-package
 - org-bullets
+- yasnippet
+- yasnippet-snippets
