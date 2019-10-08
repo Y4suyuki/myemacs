@@ -14,3 +14,4 @@ Packages are required to be installed manually.
 - counsel
 - company
 - use-package
+- org-bullets
