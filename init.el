@@ -11,6 +11,7 @@
 (when (display-graphic-p)
   (load (xah-get-fullpath "./app-ui-settings")))
 (load (xah-get-fullpath "./hooks"))
+(load (xah-get-fullpath "./beacon"))
 (load (xah-get-fullpath "./all-the-icons"))
 (load (xah-get-fullpath "./dired-mode"))
 (load (xah-get-fullpath "./ivy-mode"))
