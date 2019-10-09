@@ -17,3 +17,4 @@ Packages are required to be installed manually.
 - org-bullets
 - yasnippet
 - yasnippet-snippets
+- doom-modeline

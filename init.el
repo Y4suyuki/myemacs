@@ -7,7 +7,6 @@
 (defun xah-get-fullpath (@file-relative-path)
   (concat (file-name-directory (or load-file-name buffer-file-name)) @file-relative-path))
 
-
 (when (display-graphic-p)
   (load (xah-get-fullpath "./app-ui-settings")))
 (load (xah-get-fullpath "./hooks"))
@@ -20,3 +19,4 @@
 (load (xah-get-fullpath "./org-mode"))
 (load (xah-get-fullpath "./yasnippet"))
 (load (xah-get-fullpath "./dashboard"))
+(load (xah-get-fullpath "./doom-modeline"))
