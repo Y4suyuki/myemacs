@@ -18,3 +18,7 @@ Packages are required to be installed manually.
 - yasnippet
 - yasnippet-snippets
 - doom-modeline
+- beacon
+- magit
+- rainbow-delimiters
+- dashboard
