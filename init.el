@@ -23,3 +23,4 @@
 (load (xah-get-fullpath "./magit"))
 (load (xah-get-fullpath "./neotree"))
 (load (xah-get-fullpath "./nyan-mode"))
+(load (xah-get-fullpath "./highlight-indent-guides"))
