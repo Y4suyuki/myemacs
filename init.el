@@ -21,3 +21,4 @@
 (load (xah-get-fullpath "./dashboard"))
 (load (xah-get-fullpath "./doom-modeline"))
 (load (xah-get-fullpath "./magit"))
+(load (xah-get-fullpath "./neotree"))
