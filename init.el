@@ -1,3 +1,5 @@
+(add-to-list 'default-frame-alist '(font . "Hack-12"))
+
 ;; auto insert closing bracket
 (electric-pair-mode 1)
 
@@ -24,3 +26,6 @@
 (load (xah-get-fullpath "./neotree"))
 (load (xah-get-fullpath "./nyan-mode"))
 (load (xah-get-fullpath "./highlight-indent-guides"))
+(load (xah-get-fullpath "./flycheck"))
+(load (xah-get-fullpath "./tide"))
+(load (xah-get-fullpath "./web-mode"))
