@@ -1,9 +1,18 @@
+;; init.el --- My Emacs configuration
+
 (add-to-list 'default-frame-alist '(font . "Hack-12"))
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+(setq exec-path (append exec-path
+                        (list "/usr/local/bin")))
 
 ;; auto insert closing bracket
 (electric-pair-mode 1)
 
+
 (global-hl-line-mode 1)
+(set-face-attribute 'hl-line nil :background "#271D30")
 
 ;; http://ergoemacs.org/emacs/organize_your_dot_emacs.html
 (defun xah-get-fullpath (@file-relative-path)
@@ -11,6 +20,8 @@
 
 (when (display-graphic-p)
   (load (xah-get-fullpath "./app-ui-settings")))
+
+(load (xah-get-fullpath "./cursor"))
 (load (xah-get-fullpath "./hooks"))
 (load (xah-get-fullpath "./beacon"))
 (load (xah-get-fullpath "./all-the-icons"))
