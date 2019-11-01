@@ -22,9 +22,9 @@
 (setq org-agenda-current-time-string "← now")
 (setq org-agenda-time-grid
       '((daily today require-timed)
-	(0900 01000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400)
-	"-"
-	"────────────────"))
+        (0900 01000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400)
+        "-"
+        "────────────────"))
 
 (use-package org-bullets
   :custom (org-bullets-bullet-list '("♞" "❶" "❷" "❸" "❹" "❺" "❻" "❼"))

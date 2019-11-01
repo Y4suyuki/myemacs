@@ -1,7 +1,11 @@
 ;; https://github.com/abo-abo/swiper
-(ivy-mode 1)
+(use-package swiper)
 
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
-
-(global-set-key "\C-s" 'swiper)
+(use-package ivy
+  :after (swiper)
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t)
+  :bind
+  ("\C-s" . 'swiper))

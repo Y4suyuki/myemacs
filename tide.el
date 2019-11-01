@@ -14,5 +14,7 @@
   (setq exec-path (append exec-path
 			  (list (concat (getenv "HOME") "/.asdf/bin")
 				(concat (getenv "HOME") "/.asdf/shims"))))
+  :config
+  (setq typescript-indent-level 2)
   :hook ((typescript-mode . setup-tide-mode)
 	 (typescript-mode . tide-hl-identifier-mode)))
