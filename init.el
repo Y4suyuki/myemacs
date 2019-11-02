@@ -40,3 +40,4 @@
 (load (xah-get-fullpath "./flycheck"))
 (load (xah-get-fullpath "./tide"))
 (load (xah-get-fullpath "./web-mode"))
+(load (xah-get-fullpath "./rjsx-mode"))
