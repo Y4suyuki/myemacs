@@ -8,4 +8,7 @@
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
   :bind
-  ("\C-s" . 'swiper))
+  ("\C-s" . 'swiper)
+  ("M-x" . 'counsel-M-x)
+  ("C-x b" . 'ivy-switch-buffer)
+  ("C-c k" . 'counsel-ag))
