@@ -14,6 +14,12 @@
 (global-hl-line-mode 1)
 (set-face-attribute 'hl-line nil :background "#271D30")
 
+(set-locale-environment "en_US.UTF-8")
+
+(prefer-coding-system 'utf-8)
+(when (display-graphic-p)
+  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
+
 ;; http://ergoemacs.org/emacs/organize_your_dot_emacs.html
 (defun xah-get-fullpath (@file-relative-path)
   (concat (file-name-directory (or load-file-name buffer-file-name)) @file-relative-path))
@@ -26,6 +32,7 @@
 (load (xah-get-fullpath "./beacon"))
 (load (xah-get-fullpath "./all-the-icons"))
 (load (xah-get-fullpath "./dired-mode"))
+(load (xah-get-fullpath "./projectile"))
 (load (xah-get-fullpath "./ivy-mode"))
 (load (xah-get-fullpath "./rainbow-delimiters"))
 (load (xah-get-fullpath "./paren"))
@@ -38,6 +45,7 @@
 (load (xah-get-fullpath "./nyan-mode"))
 (load (xah-get-fullpath "./highlight-indent-guides"))
 (load (xah-get-fullpath "./flycheck"))
+(load (xah-get-fullpath "./python"))
 (load (xah-get-fullpath "./tide"))
 (load (xah-get-fullpath "./web-mode"))
 (load (xah-get-fullpath "./rjsx-mode"))
