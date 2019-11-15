@@ -17,6 +17,12 @@
            "* %?\nEntered on %U\n  %i\n  %a")
           ("m" "✎ Meeting" entry (file+datetree "~/org/meeting-notes.org")
            "* %?\nEntered on %U\n  %i\n  %a")))
+  (setq org-tag-alist '(("1on1" . ?o)
+                        ("meeting" . ?m)
+                        ("setup" . ?s)
+                        ("issue" . ?i)
+                        ("book" . ?b)
+                        ("project" . ?p)))
   (setq org-agenda-current-time-string "← now")
   (setq org-agenda-time-grid
         '((daily today require-timed)
