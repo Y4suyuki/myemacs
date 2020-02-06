@@ -6,6 +6,7 @@
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
+  (setq ivy-height 15)
   (setq enable-recursive-minibuffers t)
   :bind
   ("\C-s" . 'swiper)
