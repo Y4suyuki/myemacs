@@ -1,6 +1,9 @@
 ;; https://github.com/abo-abo/swiper
 (use-package swiper)
 
+(use-package counsel
+  :ensure t)
+
 (use-package ivy
   :after (swiper)
   :config
