@@ -1,4 +1,5 @@
 (use-package python
+  :ensure t
   :init
   (setq exec-path (append '("~/.asdf/bin" "~/.asdf/shims")
                           exec-path)))

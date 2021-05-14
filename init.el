@@ -7,6 +7,9 @@
 (setq exec-path (append exec-path
                         (list "/usr/local/bin")))
 
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(setq css-indent-offset 2)
+
 ;; auto insert closing bracket
 (electric-pair-mode 1)
 
@@ -26,6 +29,9 @@
 
 (when (display-graphic-p)
   (load (xah-get-fullpath "./app-ui-settings")))
+
+(use-package markdown-mode
+  :ensure t)
 
 (load (xah-get-fullpath "./cursor"))
 (load (xah-get-fullpath "./hooks"))
