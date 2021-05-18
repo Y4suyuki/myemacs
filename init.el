@@ -56,3 +56,6 @@
 (load (xah-get-fullpath "./web-mode"))
 (load (xah-get-fullpath "./rjsx-mode"))
 (load (xah-get-fullpath "./git-link"))
+(load (xah-get-fullpath "./ruby-mode"))
+(load (xah-get-fullpath "./lsp-mode"))
+(load (xah-get-fullpath "./company"))
