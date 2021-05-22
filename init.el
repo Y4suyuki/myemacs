@@ -1,6 +1,6 @@
 ;; init.el --- My Emacs configuration
 
-(add-to-list 'default-frame-alist '(font . "Hack-12"))
+(add-to-list 'default-frame-alist '(font . "Hack Nerd Font-10"))
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
@@ -34,7 +34,7 @@
   :ensure t)
 
 (load (xah-get-fullpath "./cursor"))
-(load (xah-get-fullpath "./hooks"))
+(load (xah-get-fullpath "./company"))
 (load (xah-get-fullpath "./beacon"))
 (load (xah-get-fullpath "./all-the-icons"))
 (load (xah-get-fullpath "./dired-mode"))

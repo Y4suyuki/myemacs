@@ -1,4 +1,5 @@
 (use-package beacon
+  :ensure t
   :custom
   (beacon-color "#dfff00")
   :config
