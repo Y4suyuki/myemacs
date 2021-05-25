@@ -7,6 +7,8 @@
 (setq exec-path (append exec-path
                         (list "/usr/local/bin")))
 
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 (setq css-indent-offset 2)
 
@@ -31,6 +33,9 @@
   (load (xah-get-fullpath "./app-ui-settings")))
 
 (use-package markdown-mode
+  :ensure t)
+
+(use-package carbon-now-sh
   :ensure t)
 
 (load (xah-get-fullpath "./cursor"))
