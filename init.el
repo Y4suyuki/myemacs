@@ -8,6 +8,7 @@
                         (list "/usr/local/bin")))
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(setq create-lockfiles nil)
 (setq css-indent-offset 2)
 
 ;; auto insert closing bracket
@@ -31,6 +32,9 @@
   (load (xah-get-fullpath "./app-ui-settings")))
 
 (use-package markdown-mode
+  :ensure t)
+
+(use-package go-mode
   :ensure t)
 
 (load (xah-get-fullpath "./cursor"))
