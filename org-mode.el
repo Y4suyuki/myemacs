@@ -34,5 +34,19 @@
 
 
 (use-package org-bullets
+  :ensure t
   :custom (org-bullets-bullet-list '("♞" "❶" "❷" "❸" "❹" "❺" "❻" "❼"))
   :hook (org-mode . org-bullets-mode))
+
+(use-package ox-gfm
+  :ensure t
+  :after org)
+
+(use-package ox-hugo
+  :ensure t
+  :after ox)
+
+(use-package org-pomodoro
+  :ensure t
+  :config
+  (setq org-pomodoro-format "🍅 %s"))
