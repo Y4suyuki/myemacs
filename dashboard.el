@@ -1,7 +1,7 @@
 (use-package dashboard
   :ensure t
   :custom
-  (dashboard-startup-banner 4)
+  (dashboard-startup-banner 1)
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-set-heading-icons t)
