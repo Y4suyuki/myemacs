@@ -39,6 +39,12 @@
 (use-package carbon-now-sh
   :ensure t)
 
+(use-package json-mode
+  :ensure t)
+
+(use-package fish-mode
+  :ensure t)
+
 (load (xah-get-fullpath "./cursor"))
 (load (xah-get-fullpath "./hooks"))
 (load (xah-get-fullpath "./beacon"))
@@ -65,3 +71,4 @@
 (load (xah-get-fullpath "./ruby-mode"))
 (load (xah-get-fullpath "./lsp-mode"))
 (load (xah-get-fullpath "./company"))
+(load (xah-get-fullpath "./docker"))
