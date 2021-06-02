@@ -72,3 +72,5 @@
 (load (xah-get-fullpath "./lsp-mode"))
 (load (xah-get-fullpath "./company"))
 (load (xah-get-fullpath "./docker"))
+(load (xah-get-fullpath "./go-mode"))
+(load (xah-get-fullpath "./hydra.el"))
