@@ -1,3 +1,6 @@
+(use-package hydra
+  :ensure t)
+
 (defhydra hydra-zoom (global-map "s-g" :hint nil :color "blue")
   "
 zoom
