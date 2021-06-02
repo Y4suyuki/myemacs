@@ -6,6 +6,7 @@
 (setq indent-line-function 'insert-tab)
 (setq exec-path (append exec-path
                         (list "/usr/local/bin")))
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
 ;; auto insert closing bracket
 (electric-pair-mode 1)
