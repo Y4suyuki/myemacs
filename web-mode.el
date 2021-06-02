@@ -1,6 +1,17 @@
 ;; web-mode settings
 ;; http://web-mode.org
 
+(defun flycheck-node_modules-executable-find (executable)
+  (or
+   (let* ((base (locate-dominating-file buffer-file-name "node_modules"))
+          (cmd (if base (expand-file-name (concat "node_modules/.bin/" executable) base))))
+        (if (and cmd (file-exists-p cmd))
+            cmd))
+   (flycheck-default-executable-find executable)))
+
+(defun my-node_modules-flycheck-hook ()
+  (setq-local flycheck-executable-find #'flycheck-node_modules-executable-find))
+
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
@@ -8,7 +19,8 @@
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1)
-  (company-mode +1))
+  (company-mode +1)
+  (my-node_modules-flycheck-hook))
 
 (use-package web-mode
   :ensure t
@@ -26,6 +38,7 @@
                          (setup-tide-mode)))))
   :config
   (flycheck-add-mode 'typescript-tslint 'web-mode)
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
   (set-face-attribute 'web-mode-html-tag-face nil :foreground "#6ccff5")
   (set-face-attribute 'web-mode-html-tag-bracket-face nil :foreground "#fdc8f0")
   (set-face-attribute 'web-mode-html-attr-custom-face nil :foreground "#fdb8f0")

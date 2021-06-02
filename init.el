@@ -6,6 +6,9 @@
 (setq indent-line-function 'insert-tab)
 (setq exec-path (append exec-path
                         (list "/usr/local/bin")))
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 (setq create-lockfiles nil)
@@ -34,7 +37,13 @@
 (use-package markdown-mode
   :ensure t)
 
-(use-package go-mode
+(use-package carbon-now-sh
+  :ensure t)
+
+(use-package json-mode
+  :ensure t)
+
+(use-package fish-mode
   :ensure t)
 
 (load (xah-get-fullpath "./cursor"))
@@ -63,3 +72,6 @@
 (load (xah-get-fullpath "./ruby-mode"))
 (load (xah-get-fullpath "./lsp-mode"))
 (load (xah-get-fullpath "./company"))
+(load (xah-get-fullpath "./docker"))
+(load (xah-get-fullpath "./go-mode"))
+(load (xah-get-fullpath "./hydra.el"))
