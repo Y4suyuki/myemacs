@@ -48,8 +48,13 @@
 
 (use-package tree-sitter
   :ensure t)
+
 (use-package tree-sitter-langs
   :ensure t)
+
+(use-package emojify
+  :ensure t
+  :hook (after-init . global-emojify-mode))
 
 (load (xah-get-fullpath "./cursor"))
 (load (xah-get-fullpath "./company"))
