@@ -56,6 +56,12 @@
   :ensure t
   :hook (after-init . global-emojify-mode))
 
+(use-package terraform-mode
+  :ensure t)
+
+(use-package terraform-doc
+  :ensure t)
+
 (load (xah-get-fullpath "./cursor"))
 (load (xah-get-fullpath "./company"))
 (load (xah-get-fullpath "./beacon"))
