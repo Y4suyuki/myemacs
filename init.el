@@ -62,6 +62,9 @@
 (use-package terraform-doc
   :ensure t)
 
+(use-package graphql-mode
+  :ensure t)
+
 (load (xah-get-fullpath "./cursor"))
 (load (xah-get-fullpath "./company"))
 (load (xah-get-fullpath "./beacon"))
@@ -90,4 +93,5 @@
 (load (xah-get-fullpath "./company"))
 (load (xah-get-fullpath "./docker"))
 (load (xah-get-fullpath "./go-mode"))
-(load (xah-get-fullpath "./hydra.el"))
+(load (xah-get-fullpath "./hydra"))
+(load (xah-get-fullpath "./mmm-mode"))
