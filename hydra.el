@@ -25,7 +25,9 @@ zoom"
    (("n" org-narrow-to-subtree "narrow to subtree")
     ("w" widen "widen"))
    "Export"
-   (("e" org-export-dispatch))))
+   (("e" org-export-dispatch))
+   "Image"
+   (("t" org-toggle-inline-images))))
 
 (major-mode-hydra-define emacs-lisp-mode nil
   ("Eval"
