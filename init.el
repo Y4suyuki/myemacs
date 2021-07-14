@@ -64,6 +64,12 @@
 (use-package graphql-mode
   :ensure t)
 
+(use-package prettier
+  :ensure t
+  :config
+  (add-to-list 'safe-local-variable-values
+               '(eval . (prettier-mode t))))
+
 (load (xah-get-fullpath "./cursor"))
 (load (xah-get-fullpath "./company"))
 (load (xah-get-fullpath "./beacon"))
