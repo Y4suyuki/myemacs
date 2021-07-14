@@ -17,7 +17,6 @@
 ;; auto insert closing bracket
 (electric-pair-mode 1)
 
-
 (global-hl-line-mode 1)
 (set-face-attribute 'hl-line nil :background "#271D30")
 
@@ -79,7 +78,7 @@
 (load (xah-get-fullpath "./dashboard"))
 (load (xah-get-fullpath "./doom-modeline"))
 (load (xah-get-fullpath "./magit"))
-(load (xah-get-fullpath "./neotree"))
+(load (xah-get-fullpath "./treemacs.el"))
 (load (xah-get-fullpath "./nyan-mode"))
 (load (xah-get-fullpath "./highlight-indent-guides"))
 (load (xah-get-fullpath "./flycheck"))
@@ -94,4 +93,5 @@
 (load (xah-get-fullpath "./docker"))
 (load (xah-get-fullpath "./go-mode"))
 (load (xah-get-fullpath "./hydra"))
-(load (xah-get-fullpath "./mmm-mode"))
+;;(load (xah-get-fullpath "./mmm-mode"))
+(load (xah-get-fullpath "./rg"))
