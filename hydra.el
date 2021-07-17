@@ -45,3 +45,10 @@ zoom"
     ("f" describe-function "function")
     ("v" describe-variable "variable")
     ("i" info-lookup-symbol "info lookup"))))
+
+(major-mode-hydra-define dired-mode nil
+  ("Deletion"
+   (("d" dired-flag-file-deletion "flag delete")
+    ("x" dired-do-flagged-delete "delete flagged files"))
+   "Copy"
+   (("C" dired-do-copy "copy"))))
