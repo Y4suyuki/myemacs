@@ -64,6 +64,11 @@
 (use-package graphql-mode
   :ensure t)
 
+(use-package diff-hl
+  :ensure t
+  :config
+  (global-diff-hl-mode))
+
 (load (xah-get-fullpath "./cursor"))
 (load (xah-get-fullpath "./company"))
 (load (xah-get-fullpath "./beacon"))
