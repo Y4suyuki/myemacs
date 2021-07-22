@@ -1,19 +1,17 @@
 (use-package hydra
   :ensure t)
 
-(defhydra hydra-zoom (global-map "s-g" :hint nil :color "blue")
+(defhydra hydra-zoom (global-map "s-SPC" :hint nil :color "blue")
   "
-zoom
-zoom
-zoom"
+g: increase scale
+l: descrease scale
+u: up trasparency
+d: down transparency
+"
   ("g" text-scale-increase "in")
-  ("l" text-scale-decrease "out"))
-
-(defhydra hydra-org (org-mode-map "C-z")
-  "Org-mode shortcut hydra keys"
-  ("n" org-narrow-to-subtree)
-  ("w" widen)
-  ("e" org-export-dispatch))
+  ("l" text-scale-decrease "out")
+  ("u" transparency-up "transparency up")
+  ("d" transparency-down "transparency down"))
 
 (use-package major-mode-hydra
   :ensure t
