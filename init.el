@@ -75,6 +75,7 @@
   (add-to-list 'safe-local-variable-values
                '(eval . (prettier-mode t))))
 
+(load (xah-get-fullpath "./transparency"))
 (load (xah-get-fullpath "./cursor"))
 (load (xah-get-fullpath "./company"))
 (load (xah-get-fullpath "./beacon"))
