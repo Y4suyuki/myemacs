@@ -1,6 +1,9 @@
 ;; init.el --- My Emacs configuration
 
 (add-to-list 'default-frame-alist '(font . "Hack Nerd Font-10"))
+(set-fontset-font "fontset-default"
+                  'japanese-jisx0208
+                  '("Noto Sans CJK JP"))
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)

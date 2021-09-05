@@ -1,10 +1,35 @@
 ;; Org mode setting
 
+(defun my/set-org-face-attributes ()
+  "set org mode face attributes"
+  (progn
+    (setq buffer-face-mode-face '(:family "Amiri" :height 200))
+    (buffer-face-mode)
+    (dolist (face '((org-level-1 . 1.5)
+                    (org-level-2 . 1.3)
+                    (org-level-3 . 1.2)
+                    (org-level-4 . 1.1)
+                    (org-level-5 . 1.1)
+                    (org-level-6 . 1.1)
+                    (org-level-7 . 1.1)
+                    (org-level-8 . 1.1)
+                    (org-document-title . 2.0)
+                    (org-verbatim . 1.0)))
+      (set-face-attribute (car face) nil :font "Amiri" :weight 'Regular :height (cdr face)))
+    (custom-theme-set-faces
+     'user
+     '(org-block ((t (:inherit fixed-pitch :height .6))))
+     '(org-code ((t (:inherit (shadow fixed-pitch)))))
+     '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+     '(org-table ((t (:inherit (org-hide fixed-pitch) :height .6)))))))
+
 (use-package org
   :bind
   ("\C-c l" . 'org-store-link)
   ("\C-c a" . 'org-agenda)
   ("\C-c c" . 'org-capture)
+  :hook
+  (org-mode . my/set-org-face-attributes)
   :config
   (setq org-agenda-files '("~/org"))
   (setq org-default-notes-file (concat org-directory "/notes.org"))
@@ -30,7 +55,12 @@
           "-"
           "────────────────"))
   (setq org-link-abbrev-alist
-        '(("skunkworks-ui" . "https://github.com/smn-ailab/skunkworks-ui/issues/"))))
+        '(("skunkworks-ui" . "https://github.com/smn-ailab/skunkworks-ui/issues/")))
+  ;; beautify org mode
+  (setq org-hide-emphasis-markers t)
+  (font-lock-add-keywords 'org-mode
+                          '(("^ *\\([-]\\) "
+                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•")))))))
 
 
 (use-package org-bullets
