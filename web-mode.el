@@ -25,7 +25,7 @@
 (use-package web-mode
   :ensure t
   :after (flycheck)
-  :mode ("\\.\\(ts\\|tsx\\|html\\)$" . web-mode)
+  :mode ("\\.\\(tsx\\|html\\)$" . web-mode)
   :init
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
@@ -33,8 +33,6 @@
   (setq web-mode-enable-auto-pairing t)
   :hook ((web-mode . (lambda ()
                        (when (string-equal "tsx" (file-name-extension buffer-file-name))
-                         (setup-tide-mode))
-                       (when (string-equal "ts" (file-name-extension buffer-file-name))
                          (setup-tide-mode)))))
   :config
   (flycheck-add-mode 'typescript-tslint 'web-mode)

@@ -25,7 +25,9 @@ d: down transparency
    "Export"
    (("e" org-export-dispatch))
    "Image"
-   (("t" org-toggle-inline-images))))
+   (("t" org-toggle-inline-images))
+   "Pomo"
+   (("p" org-pomodoro))))
 
 (major-mode-hydra-define emacs-lisp-mode nil
   ("Eval"
@@ -50,3 +52,12 @@ d: down transparency
     ("x" dired-do-flagged-delete "delete flagged files"))
    "Copy"
    (("C" dired-do-copy "copy"))))
+
+(major-mode-hydra-define web-mode nil
+  ("Navigation"
+    (("r" tide-references "references"))))
+
+(major-mode-hydra-define typescript-mode nil
+  ("Navigation"
+    (("r" tide-references "references"))))
+
