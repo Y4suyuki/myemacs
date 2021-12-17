@@ -1,5 +1,8 @@
 (use-package rustic
   :ensure
+  :init
+  (setq exec-path (append exec-path
+			              (list (concat (getenv "HOME") "/.cargo/bin"))))
   :bind (:map rustic-mode-map
               ("M-j" . lsp-ui-imenu)
               ("M-?" . lsp-find-references)

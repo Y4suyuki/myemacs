@@ -4,10 +4,10 @@
   (setq exec-path (append '("~/.asdf/bin" "~/.asdf/shims")
                           exec-path)))
 
-(use-package pipenv
+(use-package lsp-pyright
   :ensure t
-  :hook (python-mode . pipenv-mode)
   :init
-  (setq pipenv-projectile-after-switch-function
-        #'pipenv-projectile-after-switch-extended))
-
+  (setq lsp-pyright-venv-path "/Users/ageishi.yasuyuki/Library/Caches/pypoetry/virtualenvs/jira-count-py-CgAalG1x-py3.9")
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp))))  ; or lsp-deferred

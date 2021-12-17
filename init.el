@@ -1,21 +1,51 @@
 ;; init.el --- My Emacs configuration
 
-(add-to-list 'default-frame-alist '(font . "Hack Nerd Font-10"))
+(add-to-list 'default-frame-alist '(font . "Hack Nerd Font-12"))
 (set-fontset-font "fontset-default"
                   'japanese-jisx0208
                   '("Noto Sans CJK JP"))
+
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
 (setq exec-path (append exec-path
-                        (list "/usr/local/bin")))
+                        (list "/usr/local/bin" "$HOME/.cargo/bin")))
+
+;; MACOS settings
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+
+
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+
 
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 (setq create-lockfiles nil)
 (setq css-indent-offset 2)
+
+; (set-frame-parameter (selected-frame) 'alpha '(85 . 50))
+; (add-to-list 'default-frame-alist '(alpha . (85 . 50)))
+(defun alpha ()
+  "set emacs alpha"
+  (interactive)
+  (set-frame-parameter (selected-frame) 'alpha '(85 . 50))
+  (add-to-list 'default-frame-alist '(alpha . (85 . 50))))
+
+(defun omega ()
+  "set emacs alpha"
+  (interactive)
+  (set-frame-parameter (selected-frame) 'alpha '(100 . 50))
+  (add-to-list 'default-frame-alist '(alpha . (100 . 50))))
+
+(defun show-file-name ()
+  "Show the full path file name in the minibuffer."
+  (interactive)
+  (message (buffer-file-name))
+  (kill-new (file-truename buffer-file-name))
+)
+
+(global-set-key "\C-cz" 'show-file-name)
 
 ;; auto insert closing bracket
 (electric-pair-mode 1)
@@ -48,15 +78,20 @@
 (use-package fish-mode
   :ensure t)
 
-(use-package tree-sitter
+(use-package jsonnet-mode
   :ensure t)
+
+(use-package tree-sitter
+  :ensure t
+  :hook ((after-init . global-tree-sitter-mode)))
 
 (use-package tree-sitter-langs
   :ensure t)
 
 (use-package emojify
   :ensure t
-  :hook (after-init . global-emojify-mode))
+  :hook ((after-init . global-emojify-mode)
+         (after-init . emojify-mode-line-mode)))
 
 (use-package terraform-mode
   :ensure t)
@@ -107,6 +142,7 @@
 (load (xah-get-fullpath "./company"))
 (load (xah-get-fullpath "./docker"))
 (load (xah-get-fullpath "./go-mode"))
+(load (xah-get-fullpath "./rust-mode"))
 (load (xah-get-fullpath "./hydra"))
 ;;(load (xah-get-fullpath "./mmm-mode"))
 (load (xah-get-fullpath "./rg"))
