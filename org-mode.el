@@ -31,6 +31,7 @@
   :hook
   (org-mode . my/set-org-face-attributes)
   :config
+  (setq org-startup-with-inline-images t)
   (setq org-agenda-files '("~/org"))
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-capture-templates
@@ -60,7 +61,9 @@
   (setq org-hide-emphasis-markers t)
   (font-lock-add-keywords 'org-mode
                           '(("^ *\\([-]\\) "
-                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•")))))))
+                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+  (org-babel-do-load-languages
+   'org-babel-load-languages '((emacs-lisp . t) (python . t))))
 
 
 (use-package org-bullets
@@ -80,3 +83,10 @@
   :ensure t
   :config
   (setq org-pomodoro-format "🍅 %s"))
+
+(use-package ob-napkin
+  :ensure t
+  :after 'plantuml-mode)
+
+(use-package plantuml-mode
+  :ensure t)
