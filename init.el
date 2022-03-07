@@ -16,6 +16,7 @@
 
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(setq auto-save-default nil)
 
 
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
