@@ -63,8 +63,10 @@
                           '(("^ *\\([-]\\) "
                              (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
   (org-babel-do-load-languages
-   'org-babel-load-languages '((emacs-lisp . t) (python . t))))
-
+   'org-babel-load-languages '((emacs-lisp . t)
+                               (python . t)
+                               (plantuml . t)))
+  (add-to-list 'org-src-lang-modes '("napkin-puml" . plantuml)))
 
 (use-package org-bullets
   :ensure t
@@ -85,8 +87,7 @@
   (setq org-pomodoro-format "🍅 %s"))
 
 (use-package ob-napkin
-  :ensure t
-  :after 'plantuml-mode)
+  :ensure t)
 
 (use-package plantuml-mode
   :ensure t)
