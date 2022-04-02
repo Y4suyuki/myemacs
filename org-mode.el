@@ -70,7 +70,12 @@
 
 (use-package org-bullets
   :ensure t
-  :custom (org-bullets-bullet-list '("♞" "❶" "❷" "❸" "❹" "❺" "❻" "❼"))
+  ;; 1 pawn = 1 point.
+  ;; 1 Knight = 3 points.
+  ;; 1 Bishop = 3 points.
+  ;; 1 Rook = 5 points.
+  ;; 1 Queen = 9 points.
+  :custom (org-bullets-bullet-list '("♚" "♛" "♜" "♝" "♞" "♟" "♟" "♟"))
   :hook (org-mode . org-bullets-mode))
 
 (use-package ox-gfm
