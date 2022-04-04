@@ -3,7 +3,8 @@
 (defun my/set-org-face-attributes ()
   "set org mode face attributes"
   (progn
-    (setq buffer-face-mode-face '(:family "Amiri" :height 200))
+    (setq mode-line-format nil)
+    (setq buffer-face-mode-face '(:family "Amiri" :height 180))
     (buffer-face-mode)
     (dolist (face '((org-level-1 . 1.5)
                     (org-level-2 . 1.3)
@@ -19,9 +20,10 @@
     (custom-theme-set-faces
      'user
      '(org-block ((t (:inherit fixed-pitch :height .6))))
-     '(org-code ((t (:inherit (shadow fixed-pitch)))))
+     '(org-code ((t (:inherit (shadow fixed-pitch) :height .6))))
      '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
-     '(org-table ((t (:inherit (org-hide fixed-pitch) :height .6)))))))
+     '(org-table ((t (:inherit (org-hide fixed-pitch) :height .6))))
+     '(org-block-begin-line ((t (:inherit (org-hide fixed-pitch) :height .6)))))))
 
 (use-package org
   :bind
