@@ -67,6 +67,11 @@
 (when (display-graphic-p)
   (load (xah-get-fullpath "./app-ui-settings")))
 
+(add-hook 'json-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)))
+
 (use-package markdown-mode
   :ensure t)
 
