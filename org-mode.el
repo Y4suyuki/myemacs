@@ -98,3 +98,11 @@
 
 (use-package plantuml-mode
   :ensure t)
+
+(use-package ob-mermaid
+  :ensure t)
+
+(use-package org-tree-slide
+  :ensure t
+  :custom
+  (org-image-actual-width nil))
