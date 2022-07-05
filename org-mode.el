@@ -64,10 +64,14 @@
   (font-lock-add-keywords 'org-mode
                           '(("^ *\\([-]\\) "
                              (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+  (font-lock-add-keywords 'org-mode
+                          '((" +\\([*]\\) "
+                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "✱"))))))
   (org-babel-do-load-languages
    'org-babel-load-languages '((emacs-lisp . t)
                                (python . t)
-                               (plantuml . t)))
+                               (plantuml . t)
+                               (mermaid . t)))
   (add-to-list 'org-src-lang-modes '("napkin-puml" . plantuml)))
 
 (use-package org-bullets
