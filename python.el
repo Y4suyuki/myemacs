@@ -4,10 +4,26 @@
   (setq exec-path (append '("~/.asdf/bin" "~/.asdf/shims")
                           exec-path)))
 
-(use-package lsp-pyright
+ (use-package lsp-pyright
+   :ensure t
+   :hook
+   (python-mode . (lambda ()
+                    (require 'lsp-pyright)
+                    (lsp-deferred))))  ; or lsp-deferred
+
+(use-package python-black
   :ensure t
-  :init
-  (setq lsp-pyright-venv-path "/Users/ageishi.yasuyuki/Library/Caches/pypoetry/virtualenvs/jira-count-py-CgAalG1x-py3.9")
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-pyright)
-                         (lsp))))  ; or lsp-deferred
+  :demand t
+  :after python
+  :hook (python-mode . python-black-on-save-mode-enable-dwim))
+
+(use-package pyvenv
+  :ensure t
+  :config
+  (pyvenv-mode t)
+  (setq pyvenv-post-activate-hooks
+        (list (lambda ()
+                (setq python-shell-interpreter (concat pyvenv-virtual-env "bin/python")))))
+  (setq pyvenv-post-deactivate-hooks
+        (list (lambda ()
+                (setq python-shell-interpreter "python3")))))
