@@ -59,5 +59,14 @@ d: down transparency
 
 (major-mode-hydra-define typescript-mode nil
   ("Navigation"
-    (("r" tide-references "references"))))
+   (("r" tide-references "references"))))
 
+(major-mode-hydra-define go-mode nil
+  ("Navigation"
+   (("r" lsp-find-references "references"))
+   "Go"
+   (("R" go-run "run"))))
+
+(major-mode-hydra-define python-mode nil
+  ("Navigation"
+   (("r" lsp-find-references "references"))))
