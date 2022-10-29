@@ -6,7 +6,9 @@
   :ensure t
   :init
   (setq exec-path (append exec-path
-                          (list "/usr/local/bin"))))
+                          (list "/usr/local/bin")))
+  :config
+  (setq go-playground-init-command "go mod init playground"))
 
 (use-package dap-mode
   :ensure t
