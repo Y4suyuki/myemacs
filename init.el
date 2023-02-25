@@ -118,6 +118,10 @@
   (add-to-list 'safe-local-variable-values
                '(eval . (prettier-mode t))))
 
+(use-package nix-mode
+  :ensure t
+  :mode "\\.nix\\'")
+
 (load (xah-get-fullpath "./transparency"))
 (load (xah-get-fullpath "./cursor"))
 (load (xah-get-fullpath "./company"))
