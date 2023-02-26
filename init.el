@@ -1,32 +1,39 @@
 ;; init.el --- My Emacs configuration
 
+;; fonts
 (add-to-list 'default-frame-alist '(font . "Hack Nerd Font-12"))
 (set-fontset-font "fontset-default"
                   'japanese-jisx0208
                   '("Noto Sans CJK JP"))
 
+;; essential basics
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(setq auto-save-default nil)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(setq create-lockfiles nil)
+(setq css-indent-offset 2)
+(set-locale-environment "en_US.UTF-8")
+(prefer-coding-system 'utf-8)
+
+;; app ui settings
+(when (display-graphic-p)
+  (progn
+    (tool-bar-mode -1)
+    (scroll-bar-mode -1)
+    (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))))
+
+;; paths
 (setq exec-path (append exec-path
                         (list "/usr/local/bin" "$HOME/.cargo/bin")))
 
 ;; MACOS settings
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(when (eq system-type 'darwin)
+  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin")))
 
-
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-(setq auto-save-default nil)
-
-
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
-
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-(setq create-lockfiles nil)
-(setq css-indent-offset 2)
-
-; (set-frame-parameter (selected-frame) 'alpha '(85 . 50))
-; (add-to-list 'default-frame-alist '(alpha . (85 . 50)))
+;; commands
 (defun alpha ()
   "set emacs alpha"
   (interactive)
@@ -44,8 +51,13 @@
   (interactive)
   (message (buffer-file-name))
   (kill-new (file-truename buffer-file-name))
-)
+  )
 
+;; http://ergoemacs.org/emacs/organize_your_dot_emacs.html
+(defun xah-get-fullpath (@file-relative-path)
+  (concat (file-name-directory (or load-file-name buffer-file-name)) @file-relative-path))
+
+;; keymaps
 (global-set-key "\C-cz" 'show-file-name)
 
 ;; auto insert closing bracket
@@ -53,19 +65,6 @@
 
 (global-hl-line-mode 1)
 (set-face-attribute 'hl-line nil :background "#271D30")
-
-(set-locale-environment "en_US.UTF-8")
-
-(prefer-coding-system 'utf-8)
-(when (display-graphic-p)
-  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
-
-;; http://ergoemacs.org/emacs/organize_your_dot_emacs.html
-(defun xah-get-fullpath (@file-relative-path)
-  (concat (file-name-directory (or load-file-name buffer-file-name)) @file-relative-path))
-
-(when (display-graphic-p)
-  (load (xah-get-fullpath "./app-ui-settings")))
 
 (add-hook 'json-mode-hook
           (lambda ()
