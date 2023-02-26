@@ -129,6 +129,7 @@
 (load (xah-get-fullpath "./all-the-icons"))
 (load (xah-get-fullpath "./dired-mode"))
 (load (xah-get-fullpath "./projectile"))
+(load (xah-get-fullpath "./evil"))
 (load (xah-get-fullpath "./ivy-mode"))
 (load (xah-get-fullpath "./rainbow-delimiters"))
 (load (xah-get-fullpath "./paren"))
