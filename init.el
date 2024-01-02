@@ -27,7 +27,9 @@
 
 ;; paths
 (setq exec-path (append exec-path
-                        (list "/usr/local/bin" "$HOME/.cargo/bin")))
+                        (list "/usr/local/bin"
+                              "~/.cargo/bin"
+                              "~/go/bin")))
 
 ;; MACOS settings
 (when (eq system-type 'darwin)
@@ -121,6 +123,10 @@
 (use-package nix-mode
   :ensure t
   :mode "\\.nix\\'")
+
+(use-package typescript-mode
+  :ensure t
+  :mode "\\.ts\\'")
 
 (load (xah-get-fullpath "./transparency"))
 (load (xah-get-fullpath "./cursor"))
