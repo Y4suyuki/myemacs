@@ -5,6 +5,7 @@
   :hook (
          (ruby-mode . lsp)
          (go-mode . lsp)
+         (c-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
 
