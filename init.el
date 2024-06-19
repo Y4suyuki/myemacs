@@ -140,6 +140,7 @@
 (load (xah-get-fullpath "./rainbow-delimiters"))
 (load (xah-get-fullpath "./paren"))
 (load (xah-get-fullpath "./org-mode"))
+(load (xah-get-fullpath "./evil"))
 (load (xah-get-fullpath "./yasnippet"))
 (load (xah-get-fullpath "./dashboard"))
 (load (xah-get-fullpath "./doom-modeline"))
