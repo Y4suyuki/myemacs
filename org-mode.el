@@ -4,8 +4,9 @@
   "set org mode face attributes"
   (progn
     (setq mode-line-format nil)
-    (setq buffer-face-mode-face '(:family "Amiri" :height 180))
+    (setq buffer-face-mode-face '(:family "Playfair Display" :height 180))
     (buffer-face-mode)
+    (set-fontset-font t 'japanese-jisx0208 (font-spec :family "Noto Serif JP" :weight 'normal))
     (dolist (face '((org-level-1 . 1.5)
                     (org-level-2 . 1.3)
                     (org-level-3 . 1.2)
@@ -16,7 +17,7 @@
                     (org-level-8 . 1.1)
                     (org-document-title . 2.0)
                     (org-verbatim . 1.0)))
-      (set-face-attribute (car face) nil :font "Amiri" :weight 'Regular :height (cdr face)))
+      (set-face-attribute (car face) nil :font "Playfair Display" :weight 'semi-bold :height (cdr face)))
     (custom-theme-set-faces
      'user
      '(org-block ((t (:inherit fixed-pitch :height .6))))
@@ -32,6 +33,8 @@
   ("\C-c c" . 'org-capture)
   :hook
   (org-mode . my/set-org-face-attributes)
+  (org-mode . org-indent-mode)
+  (org-mode . visual-line-mode)
   :config
   (setq org-startup-with-inline-images t)
   (setq org-agenda-files '("~/org"))
