@@ -3,6 +3,12 @@
   (setq exec-path (append '("~/.asdf/bin" "~/.asdf/shims")
                           exec-path)))
 
+(use-package ruff-format
+  :ensure t
+  :demand t
+  :after python
+  :hook (python-mode . ruff-format-on-save-mode))
+
  (use-package lsp-pyright
    :ensure t
    :hook
