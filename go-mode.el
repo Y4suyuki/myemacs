@@ -1,6 +1,7 @@
 (use-package go-mode
   :ensure t
-  :hook (before-save . gofmt-before-save))
+  :mode "\\.go\\'"
+  :hook (before-save . gofmt-before-save)
 
 (use-package go-playground
   :ensure t

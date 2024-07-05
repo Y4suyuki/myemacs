@@ -19,6 +19,7 @@
   :config (treemacs-icons-dired-mode))
 
 (use-package treemacs-all-the-icons
+  :after all-the-icons
   :ensure t)
 
 (use-package treemacs-magit

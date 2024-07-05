@@ -77,16 +77,20 @@
   :ensure t)
 
 (use-package carbon-now-sh
-  :ensure t)
+  :ensure t
+  :defer 30)
 
 (use-package json-mode
-  :ensure t)
+  :ensure t
+  :mode "\\.json\\'")
 
 (use-package fish-mode
-  :ensure t)
+  :ensure t
+  :mode "\\.fish\\'")
 
 (use-package jsonnet-mode
-  :ensure t)
+  :ensure t
+  :mode "\\.jsonnet\\'")
 
 (use-package tree-sitter
   :ensure t
@@ -101,13 +105,16 @@
          (after-init . emojify-mode-line-mode)))
 
 (use-package terraform-mode
-  :ensure t)
+  :ensure t
+  :mode "\\.tf\\'")
 
 (use-package terraform-doc
+  :commands terraform-doc
   :ensure t)
 
 (use-package graphql-mode
-  :ensure t)
+  :ensure t
+  :defer 30)
 
 (use-package diff-hl
   :ensure t
@@ -116,6 +123,7 @@
 
 (use-package prettier
   :ensure t
+  :mode "\\.ts\\'"
   :config
   (add-to-list 'safe-local-variable-values
                '(eval . (prettier-mode t))))
