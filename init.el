@@ -171,3 +171,4 @@
 (load (xah-get-fullpath "./hydra"))
 ;;(load (xah-get-fullpath "./mmm-mode"))
 (load (xah-get-fullpath "./rg"))
+(load (xah-get-fullpath "./ai"))
