@@ -21,7 +21,9 @@ d: down transparency
 (major-mode-hydra-define org-mode nil
   ("Tree"
    (("n" org-narrow-to-subtree "narrow to subtree")
-    ("w" widen "widen"))
+    ("w" widen "widen")
+    ("c" org-cycle "org-cycle")
+    ("g" org-global-cycle "org-global-cycle"))
    "Export"
    (("e" org-export-dispatch))
    "Image"
@@ -69,4 +71,11 @@ d: down transparency
 
 (major-mode-hydra-define python-mode nil
   ("Navigation"
-   (("r" lsp-find-references "references"))))
+   (("r" lsp-bridge-find-references "R references"))
+   "Format"
+   (("f" lsp-bridge-code-format "<leader> l f format code")
+    ("a" lsp-bridge-code-action"<leader> l a code action"))
+   "AI"
+   (("g" gptel "gptel"))
+   "Misc"
+   (("p" show-file-name "copy file name"))))

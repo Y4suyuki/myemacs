@@ -1,4 +1,28 @@
 ;; init.el --- My Emacs configuration
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+(defun efs/display-startup-time ()
+  (message "Emacs loaded in %s with %d garbage collections."
+           (format "%.2f seconds"
+                   (float-time
+                    (time-subtract after-init-time before-init-time)))
+           gcs-done))
+
+(add-hook 'emacs-startup-hook #'efs/display-startup-time)
 
 ;; fonts
 (add-to-list 'default-frame-alist '(font . "Hack Nerd Font-12"))
@@ -59,6 +83,7 @@
 (defun xah-get-fullpath (@file-relative-path)
   (concat (file-name-directory (or load-file-name buffer-file-name)) @file-relative-path))
 
+
 ;; keymaps
 (global-set-key "\C-cz" 'show-file-name)
 
@@ -73,7 +98,7 @@
             (make-local-variable 'js-indent-level)
             (setq js-indent-level 2)))
 
-(use-package markdown-mode
+(use-package mozc
   :ensure t)
 
 (use-package carbon-now-sh
@@ -112,6 +137,7 @@
   :commands terraform-doc
   :ensure t)
 
+
 (use-package graphql-mode
   :ensure t
   :defer 30)
@@ -138,12 +164,11 @@
 
 (load (xah-get-fullpath "./transparency"))
 (load (xah-get-fullpath "./cursor"))
-(load (xah-get-fullpath "./company"))
+;;(load (xah-get-fullpath "./company"))
 (load (xah-get-fullpath "./beacon"))
 (load (xah-get-fullpath "./all-the-icons"))
 (load (xah-get-fullpath "./dired-mode"))
 (load (xah-get-fullpath "./projectile"))
-(load (xah-get-fullpath "./evil"))
 (load (xah-get-fullpath "./ivy-mode"))
 (load (xah-get-fullpath "./rainbow-delimiters"))
 (load (xah-get-fullpath "./paren"))
