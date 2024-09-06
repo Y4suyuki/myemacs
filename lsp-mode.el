@@ -1,19 +1,14 @@
-(use-package lsp-mode
-  :ensure t
+(use-package lsp-bridge
+  :straight '(lsp-bridge :type git :host github :repo "manateelazycat/lsp-bridge"
+            :files (:defaults "*.el" "*.py" "acm" "core" "langserver" "multiserver" "resources")
+            :build (:not compile))
   :init
-  (setq lsp-keymap-prefix "C-c l")
-  :hook (
-         (ruby-mode . lsp)
-         (go-mode . lsp)
-         (c-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
-
-(use-package lsp-ivy
-  :ensure t
-  :commands lsp-ivy-workspace-symbol)
+  (global-lsp-bridge-mode)
+  :config
+  (setq acm-enable-copilot t))
 
 (use-package which-key
   :ensure t
   :config
+  (message "loaded which-key: %s" (current-time-string))
   (which-key-mode))
