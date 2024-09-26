@@ -8,7 +8,15 @@
   (evil-define-key 'normal 'global (kbd "<leader>fs") 'save-buffer)
   (evil-define-key 'normal 'global (kbd "<leader>SPC") 'major-mode-hydra)
   (define-key evil-normal-state-map (kbd "/") 'swiper)
-  (evil-define-key 'normal 'python-mode-map (kbd "R") 'lsp-find-references))
+  (evil-define-key 'normal lsp-bridge-mode-map (kbd "g d") 'lsp-bridge-find-def)
+  (evil-define-key 'normal lsp-bridge-mode-map (kbd "R") 'lsp-bridge-find-references)
+  ;; set keybind to allow select next acm candidate with C-n
+  (evil-define-key 'insert 'global (kbd "C-n") 'acm-select-next)
+  (evil-define-key 'insert 'global (kbd "C-p") 'acm-select-prev)
+  (evil-define-key 'normal 'global (kbd "<leader>l f") 'lsp-bridge-code-format)
+  (evil-define-key 'normal 'global (kbd "<leader>l r") 'lsp-bridge-rename)
+  (evil-define-key 'normal 'global (kbd "<leader>l a") 'lsp-bridge-code-action))
+
 
 (use-package evil-escape
   :ensure t

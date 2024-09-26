@@ -5,7 +5,9 @@
   :init
   (global-lsp-bridge-mode)
   :config
-  (setq acm-enable-copilot t))
+  (setq acm-enable-copilot t)
+  (setq lsp-bridge-enable-auto-format-code t)
+  (setq lsp-bridge-auto-format-code-idle 1))
 
 (use-package which-key
   :ensure t
