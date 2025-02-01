@@ -160,7 +160,9 @@
 
 (use-package typescript-mode
   :ensure t
-  :mode "\\.ts\\'")
+  :mode "\\.ts\\'"
+  :config
+  (setq typescript-indent-level 2))
 
 (load (xah-get-fullpath "./transparency"))
 (load (xah-get-fullpath "./cursor"))
