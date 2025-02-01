@@ -15,7 +15,8 @@
   (evil-define-key 'insert 'global (kbd "C-p") 'acm-select-prev)
   (evil-define-key 'normal 'global (kbd "<leader>l f") 'lsp-bridge-code-format)
   (evil-define-key 'normal 'global (kbd "<leader>l r") 'lsp-bridge-rename)
-  (evil-define-key 'normal 'global (kbd "<leader>l a") 'lsp-bridge-code-action))
+  (evil-define-key 'normal 'global (kbd "<leader>l a") 'lsp-bridge-code-action)
+  (evil-define-key 'normal 'global (kbd "<leader>l TAB") 'lsp-bridge-indent-right))
 
 
 (use-package evil-escape

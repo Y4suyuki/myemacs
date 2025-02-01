@@ -7,7 +7,8 @@
   :config
   (setq acm-enable-copilot t)
   (setq lsp-bridge-enable-auto-format-code t)
-  (setq lsp-bridge-auto-format-code-idle 1))
+  (setq lsp-bridge-enable-hover-diagnostic t)
+  (setq lsp-bridge-auto-format-code-idle 2))
 
 (use-package which-key
   :ensure t

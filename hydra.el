@@ -72,6 +72,8 @@ d: down transparency
 (major-mode-hydra-define python-mode nil
   ("Navigation"
    (("r" lsp-bridge-find-references "R references"))
+   "Docs"
+   (("d" lsp-bridge-show-documentation "show documentation"))
    "Format"
    (("f" lsp-bridge-code-format "<leader> l f format code")
     ("a" lsp-bridge-code-action"<leader> l a code action"))
