@@ -4,6 +4,7 @@
   (setq evil-undo-system 'undo-redo)  ;; this only works for emacs 28 and above
   :config
   (evil-mode 1)
+  (evil-set-initial-state 'dashboard-mode 'emacs)
   (evil-set-leader 'normal (kbd "SPC"))
   (evil-define-key 'normal 'global (kbd "<leader>fs") 'save-buffer)
   (evil-define-key 'normal 'global (kbd "<leader>SPC") 'major-mode-hydra)
