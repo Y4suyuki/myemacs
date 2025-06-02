@@ -1,5 +1,6 @@
 (use-package dashboard
   :ensure t
+  :after (evil)
   :custom
   (dashboard-startup-banner 1)
   :config
