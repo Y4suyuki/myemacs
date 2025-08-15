@@ -9,6 +9,7 @@
   (setq lsp-bridge-enable-auto-format-code t)
   (setq lsp-bridge-enable-hover-diagnostic t)
   (setq lsp-bridge-auto-format-code-idle 2)
+  (setq lsp-bridge-python-command (getenv "LSP_BRIDGE_PYTHON_COMMAND"))
   (setq lsp-bridge-user-langserver-dir "~/.emacs.d/lsp-langserver/"))
 
 (use-package which-key
