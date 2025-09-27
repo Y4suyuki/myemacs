@@ -226,7 +226,9 @@
 
 (use-package prettier
   :ensure t
-  :mode "\\.ts\\'"
+  :mode "\\.ts?\\'"
+  :hook ((typescript-ts-mode . prettier-mode)
+          (tsx-ts-mode . prettier-mode))
   :config
   (add-to-list 'safe-local-variable-values
                '(eval . (prettier-mode t))))
