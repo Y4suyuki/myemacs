@@ -85,5 +85,5 @@ d: down transparency
       (("p" show-file-name "copy file name")))))
 
 ;; Usage:
-(define-lsp-hydra python-mode)
-(define-lsp-hydra typescript-ts-mode)
+(mapc #'define-lsp-hydra
+      '(python-ts-mode typescript-ts-mode tsx-ts-mode))
