@@ -69,15 +69,21 @@ d: down transparency
    "Go"
    (("R" go-run "run"))))
 
-(major-mode-hydra-define python-mode nil
-  ("Navigation"
-   (("r" lsp-bridge-find-references "R references"))
-   "Docs"
-   (("d" lsp-bridge-show-documentation "show documentation"))
-   "Format"
-   (("f" lsp-bridge-code-format "<leader> l f format code")
-    ("a" lsp-bridge-code-action"<leader> l a code action"))
-   "AI"
-   (("g" gptel "gptel"))
-   "Misc"
-   (("p" show-file-name "copy file name"))))
+(defmacro define-lsp-hydra (mode-name)
+  "Define a major-mode-hydra for MODE-NAME with common LSP bindings."
+  `(major-mode-hydra-define ,mode-name nil
+     ("Navigation"
+      (("r" lsp-bridge-find-references "R references"))
+      "Docs"
+      (("d" lsp-bridge-show-documentation "show documentation"))
+      "Format"
+      (("f" lsp-bridge-code-format "<leader> l f format code")
+       ("a" lsp-bridge-code-action "<leader> l a code action"))
+      "AI"
+      (("g" gptel "gptel"))
+      "Misc"
+      (("p" show-file-name "copy file name")))))
+
+;; Usage:
+(define-lsp-hydra python-mode)
+(define-lsp-hydra typescript-ts-mode)
