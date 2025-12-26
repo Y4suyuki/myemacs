@@ -224,14 +224,23 @@
   :config
   (global-diff-hl-mode))
 
-(use-package prettier
+(use-package apheleia
   :ensure t
-  :mode "\\.ts?\\'"
-  :hook ((typescript-ts-mode . prettier-mode)
-          (tsx-ts-mode . prettier-mode))
   :config
-  (add-to-list 'safe-local-variable-values
-               '(eval . (prettier-mode t))))
+  ;; 1. Define the Biome formatter using the 'npx symbol
+  ;; This tells Apheleia to use its internal apheleia-npx logic
+  (setf (alist-get 'biome apheleia-formatters)
+        '(npx "biome" "format" "--stdin-file-path" filepath))
+
+  ;; 2. Assign Biome to relevant file modes
+  (setf (alist-get 'js-mode apheleia-mode-alist) 'biome)
+  (setf (alist-get 'js-ts-mode apheleia-mode-alist) 'biome)
+  (setf (alist-get 'typescript-mode apheleia-mode-alist) 'biome)
+  (setf (alist-get 'typescript-ts-mode apheleia-mode-alist) 'biome)
+  (setf (alist-get 'json-mode apheleia-mode-alist) 'biome)
+
+  ;; Enable Apheleia globally
+  (apheleia-global-mode +1))
 
 (use-package nix-mode
   :ensure t
