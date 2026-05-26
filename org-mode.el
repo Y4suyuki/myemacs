@@ -40,6 +40,10 @@
   (setq right-margin-width 2)
   (setq org-startup-with-inline-images t)
   (setq org-agenda-files '("~/s3-fs/org"))
+  (setq org-log-done 'time)
+  (setq org-preview-latex-default-process 'dvisvgm)
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+  (setq org-agenda-files '("~/personal-org/gtd.org"))
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-capture-templates
         '(("t" "✔ Todo" entry (file+headline "~/s3-fs/org/gtd.org" "Tasks")
