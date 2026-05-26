@@ -182,6 +182,43 @@
   (when (memq window-system '(mac ns x))
 
     (exec-path-from-shell-initialize)))
+
+
+
+
+(use-package ox-zola
+  :vc (:url "https://github.com/gicrisf/ox-zola"
+            :rev :newest
+            :branch "main")
+  :config
+  (defvar my-zola-blog-dir "~/gh/y4suyuki/blog/blog-posts/"
+    "Base directory for my Zola blog.")
+
+  (with-eval-after-load 'org-capture
+    (defun org-zola-new-subtree-post-capture-template ()
+      "Returns `org-capture' template string for new blog post.
+See `org-capture-templates' for more information."
+      (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
+             (fname (org-hugo-slug title)))
+        (mapconcat #'identity
+                   `(
+                     ,(concat "* TODO " title)
+                     ":PROPERTIES:"
+                     ":EXPORT_HUGO_SECTION: blog"
+                     ,(concat ":EXPORT_FILE_NAME: " fname)
+                     ":END:"
+                     "%?\n")          ;Place the cursor here finally
+                   "\n")))
+    (add-to-list 'org-capture-templates
+                 `("b"
+                   "Blog post"
+                   entry
+                   ;; It is assumed that below file is present in `org-directory'
+                   ;; and that it has a "Blog Ideas" heading. It can even be a
+                   ;; symlink pointing to the actual location of all-posts.org!
+                   (file+olp ,(expand-file-name "all-posts.org" "~/gh/y4suyuki/blog/blog-posts/") "Blog Ideas")
+                   (function org-zola-new-subtree-post-capture-template)))))
+
 (use-package mozc
   :ensure t)
 
