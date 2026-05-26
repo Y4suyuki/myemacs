@@ -237,6 +237,8 @@
   (setf (alist-get 'js-ts-mode apheleia-mode-alist) 'biome)
   (setf (alist-get 'typescript-mode apheleia-mode-alist) 'biome)
   (setf (alist-get 'typescript-ts-mode apheleia-mode-alist) 'biome)
+  (setf (alist-get 'tsx-ts-mode apheleia-mode-alist) 'biome)
+  (setf (alist-get 'json-ts-mode apheleia-mode-alist) 'biome)
   (setf (alist-get 'json-mode apheleia-mode-alist) 'biome)
 
   ;; Enable Apheleia globally
