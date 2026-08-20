@@ -4,9 +4,9 @@
   "set org mode face attributes"
   (progn
     (setq mode-line-format nil)
-    (setq buffer-face-mode-face '(:family "Playfair Display" :height 180))
+    (setq buffer-face-mode-face '(:family "Vollkorn" :height 180))
     (buffer-face-mode)
-    (set-fontset-font t 'japanese-jisx0208 (font-spec :family "Noto Serif JP" :weight 'normal))
+    (set-fontset-font t 'japanese-jisx0208 (font-spec :family "Klee One" :weight 'semi-bold))
     (dolist (face '((org-level-1 . 1.5)
                     (org-level-2 . 1.3)
                     (org-level-3 . 1.2)
@@ -17,10 +17,10 @@
                     (org-level-8 . 1.1)
                     (org-document-title . 2.0)
                     (org-verbatim . 1.0)))
-      (set-face-attribute (car face) nil :font "Playfair Display" :weight 'semi-bold :height (cdr face)))
+      (set-face-attribute (car face) nil :font "Vollkorn" :weight 'semi-bold :height (cdr face)))
     (custom-theme-set-faces
      'user
-     '(org-block ((t (:inherit fixed-pitch :height .6))))
+     '(org-block ((t (:inherit fixed-pitch :height .6 :line-spacing -0.2))))
      '(org-code ((t (:inherit (shadow fixed-pitch) :height .6))))
      '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
      '(org-table ((t (:inherit (org-hide fixed-pitch) :height .6))))
@@ -38,12 +38,12 @@
   :config
   (setq left-margin-width 2)
   (setq right-margin-width 2)
+  (setq org-directory "~/s3-fs/org")
   (setq org-startup-with-inline-images t)
-  (setq org-agenda-files '("~/s3-fs/org"))
+  (setq org-agenda-files '("~/s3-fs/org" "~/gh/y4suyuki/blog/blog-posts/all-posts.org"))
   (setq org-log-done 'time)
   (setq org-preview-latex-default-process 'dvisvgm)
   (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
-  (setq org-agenda-files '("~/personal-org/gtd.org"))
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-capture-templates
         '(("t" "✔ Todo" entry (file+headline "~/s3-fs/org/gtd.org" "Tasks")
