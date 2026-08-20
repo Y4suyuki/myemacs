@@ -1,4 +1,5 @@
 ;; init.el --- My Emacs configuration
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name
@@ -30,7 +31,7 @@
                   'japanese-jisx0208
                   '("Noto Sans CJK JP"))
 
-;; essential basics
+;; Essential basics
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
@@ -41,6 +42,9 @@
 (setq css-indent-offset 2)
 (set-locale-environment "en_US.UTF-8")
 (prefer-coding-system 'utf-8)
+
+(use-package mozc
+  :ensure t)
 
 ;;; emacs default treesit
 (use-package treesit
@@ -130,7 +134,8 @@
 (setq exec-path (append exec-path
                         (list "/usr/local/bin"
                               "~/.cargo/bin"
-                              "~/go/bin")))
+                              "~/go/bin"
+                              "/nix/var/nix/profiles/default/bin")))
 
 ;; MACOS settings
 (when (eq system-type 'darwin)
@@ -183,9 +188,6 @@
 
     (exec-path-from-shell-initialize)))
 
-
-
-
 (use-package ox-zola
   :vc (:url "https://github.com/gicrisf/ox-zola"
             :rev :newest
@@ -194,11 +196,46 @@
   (defvar my-zola-blog-dir "~/gh/y4suyuki/blog/blog-posts/"
     "Base directory for my Zola blog.")
 
+  ;; Fix: ox-zola's WIM commands (C-c C-e Z z / Z O / Z A) delegate to
+  ;; ox-hugo, which hardcodes the 'hugo backend, so the body gets Hugo
+  ;; shortcodes. Swap in the 'zola backend for the duration of those exports.
+  (defun my/ox-zola--swap-backend (args)
+    "Swap the hardcoded hugo backend for zola."
+    (if (eq (car args) 'hugo)
+        (cons 'zola (cdr args))
+      args))
+
+  (defun my/ox-zola--wim-fix (orig &rest args)
+    "Around advice so WIM exports use the zola backend."
+    (advice-add 'org-export-to-file :filter-args #'my/ox-zola--swap-backend)
+    (unwind-protect
+        (apply orig args)
+      (advice-remove 'org-export-to-file #'my/ox-zola--swap-backend)))
+
+  (advice-add 'ox-zola-export-wim-to-md :around #'my/ox-zola--wim-fix)
+
+  ;; Rewrite ox-zola's figure shortcodes as plain Markdown images.
+  ;; Uses org-export's official filter mechanism.
+  (defun my/zola-figure-to-md-image (text backend _info)
+    "Rewrite Zola figure shortcodes as plain Markdown images."
+    (let ((trimmed (org-trim text)))
+      (when (and (org-export-derived-backend-p backend 'zola)
+                 (string-match "\\`{{ figure(\\(.*\\)) }}\\'" trimmed))
+        (let* ((args (match-string 1 trimmed))
+               (src (when (string-match "src=\"\\([^\"]*\\)\"" args)
+                      (match-string 1 args)))
+               (alt (if (string-match "alt=\"\\([^\"]*\\)\"" args)
+                        (match-string 1 args)
+                      "")))
+          (when src (format "![%s](%s)" alt src))))))
+  
+  (add-to-list 'org-export-filter-link-functions #'my/zola-figure-to-md-image)
+
   (with-eval-after-load 'org-capture
     (defun org-zola-new-subtree-post-capture-template ()
       "Returns `org-capture' template string for new blog post.
 See `org-capture-templates' for more information."
-      (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
+      (let* ((title (read-from-minibuffer "Post Title: "))
              (fname (org-hugo-slug title)))
         (mapconcat #'identity
                    `(
@@ -207,20 +244,14 @@ See `org-capture-templates' for more information."
                      ":EXPORT_HUGO_SECTION: blog"
                      ,(concat ":EXPORT_FILE_NAME: " fname)
                      ":END:"
-                     "%?\n")          ;Place the cursor here finally
+                     "%?\n")
                    "\n")))
     (add-to-list 'org-capture-templates
                  `("b"
                    "Blog post"
                    entry
-                   ;; It is assumed that below file is present in `org-directory'
-                   ;; and that it has a "Blog Ideas" heading. It can even be a
-                   ;; symlink pointing to the actual location of all-posts.org!
                    (file+olp ,(expand-file-name "all-posts.org" "~/gh/y4suyuki/blog/blog-posts/") "Blog Ideas")
                    (function org-zola-new-subtree-post-capture-template)))))
-
-(use-package mozc
-  :ensure t)
 
 (use-package carbon-now-sh
   :ensure t
@@ -291,6 +322,13 @@ See `org-capture-templates' for more information."
   :config
   (setq typescript-indent-level 2))
 
+(use-package aidermacs
+  :ensure t
+  :bind (("C-c a" . aidermacs-transient-menu))
+  :custom
+  (aidermacs-use-architect-mode t)
+  (aidermacs-default-model "sonnet"))
+
 (load (xah-get-fullpath "./transparency"))
 (load (xah-get-fullpath "./cursor"))
 ;;(load (xah-get-fullpath "./company"))
@@ -310,7 +348,7 @@ See `org-capture-templates' for more information."
 (load (xah-get-fullpath "./treemacs.el"))
 (load (xah-get-fullpath "./nyan-mode"))
 (load (xah-get-fullpath "./highlight-indent-guides"))
-(load (xah-get-fullpath "./flycheck"))
+;; (load (xah-get-fullpath "./flycheck"))
 (load (xah-get-fullpath "./python"))
 (load (xah-get-fullpath "./git-link"))
 (load (xah-get-fullpath "./ruby-mode"))
@@ -319,6 +357,6 @@ See `org-capture-templates' for more information."
 (load (xah-get-fullpath "./go-mode"))
 (load (xah-get-fullpath "./rust-mode"))
 (load (xah-get-fullpath "./hydra"))
-;;(load (xah-get-fullpath "./mmm-mode"))
+(load (xah-get-fullpath "./mmm-mode"))
 (load (xah-get-fullpath "./rg"))
 (load (xah-get-fullpath "./ai"))
