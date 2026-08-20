@@ -1,7 +1,7 @@
 (use-package projectile
   :ensure t
   :init
-  (setq projectile-project-search-path '("~/mp/" "~/gh/" "~/lab/"))
+  (setq projectile-project-search-path '("~/gh/" "~/lab/"))
   (setq projectile-git-submodule-command nil)
   (setq projectile-switch-project-action #'projectile-find-dir)
   (setq projectile-find-dir-includes-top-level t)
