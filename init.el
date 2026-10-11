@@ -31,6 +31,8 @@
                   'japanese-jisx0208
                   '("Noto Sans CJK JP"))
 
+(setq auth-sources '("~/.authinfo.gpg"))
+
 ;; Essential basics
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
