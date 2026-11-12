@@ -255,6 +255,17 @@ See `org-capture-templates' for more information."
                    (file+olp ,(expand-file-name "all-posts.org" "~/gh/y4suyuki/blog/blog-posts/") "Blog Ideas")
                    (function org-zola-new-subtree-post-capture-template)))))
 
+(use-package eat
+  :ensure t
+  :custom
+  ;; Enable mouse tracking so scrolling/clicking works inside TUIs
+  (eat-enable-mouse t)
+  ;; Automatically compile the optional C core if a compiler exists
+  (eat-compile-term-terminfo t)
+  :config
+  ;; Optional: auto-enable in Eshell if you use Eshell
+  (add-hook 'eshell-load-hook #'eat-eshell-mode))
+
 (use-package carbon-now-sh
   :ensure t
   :defer 30)
